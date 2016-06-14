@@ -35,7 +35,7 @@ var Draw = {
     },
 
     polygon: function(context, polygon, colour) {
-        context.fillStyle = colour;
+        context.fillStyle = (typeof colour === 'undefined') ? 'white' : colour;
         context.beginPath();
         context.moveTo(polygon[0].x, polygon[0].y);
         for (var i = 1; i < polygon.length; i++) {
@@ -57,5 +57,11 @@ var Draw = {
     clear: function(context, colour) {
         context.fillStyle = (typeof colour === 'undefined') ? 'white' : colour;
         context.fillRect(0, 0, canvas.width, canvas.height);
+    },
+
+    text: function(context, position, text, colour, font){
+        context.fillStyle = (typeof colour === 'undefined') ? 'white' : colour;
+        context.font = (typeof font === 'undefined') ? 'normal 12px ubuntu' : font;
+        context.fillText(text, position.x, position.y);
     }
 };
