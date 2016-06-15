@@ -13,6 +13,12 @@ var Tools = {
         return y * width + x;
     },
 
+    angle2vector: function(angle) {
+        var x = Math.cos(angle);
+        var y = Math.sin(angle);
+        return new Vec2(x,y);
+    },
+
     degreesToRadians: function(deg) { return deg * (Math.PI / 180); },
     radiansToDegrees: function(rad) { return rad * (180 / Math.PI); },
 
@@ -155,6 +161,10 @@ var Tools = {
               }
               return rand * (max - min) + min;
             }
+    },
+
+    randomVariance: function(num, variance) {
+        return Tools.random(num - variance, num + variance);
     },
 
     map: function(n, start1, stop1, start2, stop2) {
