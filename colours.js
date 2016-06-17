@@ -10,8 +10,8 @@ var Colours = {
         colours[1] = o.g;
         colours[2] = o.b;
         var colour_list = colours.join();
-        if ('alpha' in o) {
-            return 'rgba(' + colour_list + ',' + (o.alpha).toFixed(2) + ')';
+        if ('a' in o) {
+            return 'rgba(' + colour_list + ',' + (o.a).toFixed(2) + ')';
         } else {
             return 'rgb(' + colour_list + ')';
         }
