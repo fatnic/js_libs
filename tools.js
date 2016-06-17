@@ -147,7 +147,8 @@ var Tools = {
             return false;
     },
 
-    random: function(min, max) {
+    random: function(min, max, precision) {
+        var p = (typeof precision === 'undefined') ? 10 : precision;
         var rand = Math.random();
             if(arguments.length === 0) {
               return rand;
@@ -159,7 +160,7 @@ var Tools = {
                 min = max;
                 max = tmp;
               }
-              return rand * (max - min) + min;
+              return (rand * (max - min) + min).toFixed(p);
             }
     },
 
