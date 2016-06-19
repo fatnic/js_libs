@@ -12,6 +12,13 @@ var Draw = {
     fillRect: function(context, position, size, colour) {
         context.fillStyle = (typeof(colour) === 'undefined') ? 'white' : colour;
         context.fillRect(position.x, position.y, size.x, size.y);
+        context.fill();
+    },
+
+    rect: function(context, position, size, colour) {
+        context.strokeStyle = (typeof(colour) === 'undefined') ? 'white' : colour;
+        context.rect(position.x, position.y, size.x, size.y);
+        context.stroke();
     },
 
     circle: function(context, position, radius, colour) {
@@ -55,8 +62,8 @@ var Draw = {
     },
 
     clear: function(context, colour) {
-        context.fillStyle = (typeof colour === 'undefined') ? 'white' : colour;
-        context.fillRect(0, 0, canvas.width, canvas.height);
+        context.fillStyle = (typeof colour === 'undefined') ? 'black' : colour;
+        context.fillRect(0, 0, context.canvas.width, context.canvas.height);
     },
 
     text: function(context, position, text, colour, font){
