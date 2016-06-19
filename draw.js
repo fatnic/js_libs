@@ -17,6 +17,7 @@ var Draw = {
 
     rect: function(context, position, size, colour) {
         context.strokeStyle = (typeof(colour) === 'undefined') ? 'white' : colour;
+        context.beginPath();
         context.rect(position.x, position.y, size.x, size.y);
         context.stroke();
     },
