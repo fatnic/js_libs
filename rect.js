@@ -1,3 +1,12 @@
+function Segment(a, b) {
+    this.a = a;
+    this.b = b;
+
+    Object.defineProperty(this, "length", {
+        get: function() { return this.a.distanceTo(b); }
+    });
+}
+
 function Rect(position, size) {
     this.position = position;
     this.size = size;
@@ -32,6 +41,18 @@ function Rect(position, size) {
             ];
         }
     });
+
+    Object.defineProperty(this, "segments", {
+        get: function() {
+            return [
+                new Segment(new Vec2(this.position.x, this.position.y), new Vec2(this.position.x + this.size.x, this.position.y)),
+                new Segment(new Vec2(this.position.x + this.size.x, this.position.y), new Vec2(this.position.x + this.size.x, this.position.y + this.size.y)),
+                new Segment(new Vec2(this.position.x + this.size.x, this.position.y + this.size.y), new Vec2(this.position.x, this.position.y + this.size.y)),
+                new Segment(new Vec2(this.position.x, this.position.y + this.size.y), new Vec2(this.position.x, this.position.y))
+            ];
+        }
+    });
+
 }
 
 Rect.prototype.contains = function (point) {
