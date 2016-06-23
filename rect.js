@@ -33,6 +33,10 @@ function Rect(position, size) {
         }
     });
 
+    Object.defineProperty(this, "center", {
+        get: function() { return new Vec2(this.position.x + (this.size.x/2), this.position.y + (this.size.y/2)); }
+    });
+
     Object.defineProperty(this, "segments", {
         get: function() {
             return [
