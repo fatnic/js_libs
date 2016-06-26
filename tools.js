@@ -3,6 +3,14 @@
 var RAD = 2 * Math.PI;
 
 var Tools = {
+    timestamp: function() {
+        if (window.performance && window.performance.now) {
+            return window.performance.now();
+        } else {
+            return new Date().getTime();
+        }
+    },
+
     i2xy: function(index, width) {
         var x = index % width;
         var y = Math.floor(index/width);
