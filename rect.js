@@ -1,6 +1,6 @@
 function Rect(position, size) {
-    this.position = position;
-    this.size = size;
+    this.position = (typeof position === 'undefined') ? new Vec2(0,0) : position;;
+    this.size = (typeof size === 'undefined') ? new Vec2(0,0) : size;
 
     Object.defineProperty(this, "x", {
         get: function() { return this.position.x; },
@@ -59,7 +59,7 @@ Rect.prototype.contains = function (point) {
 };
 
 Rect.prototype.intersects = function (rect2) {
-
+    
 };
 
 Rect.prototype.draw = function (context, filled) {
