@@ -98,3 +98,7 @@ Vec2.prototype.toArray = function(n) {
 Vec2.prototype.clone = function() {
     return new Vec2(this.x, this.y);
 };
+
+Vec2.prototype.print = function () {
+    return this.x + ":" + this.y;
+};
