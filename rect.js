@@ -51,15 +51,11 @@ function Rect(position, size) {
 }
 
 Rect.prototype.contains = function (point) {
-    if (this.position.x <= point.x && point.x <= this.position.x + this.size.x &&
-        this.position.y <= point.y && point.y <= this.position.y + this.size.y) {
-            return true;
-        }
-    return false;
+    return Collision.rectContains(this, point);
 };
 
 Rect.prototype.intersects = function (rect2) {
-    
+    return Collision.intersects(this, rect2);
 };
 
 Rect.prototype.draw = function (context, filled) {

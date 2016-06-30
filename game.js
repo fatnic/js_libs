@@ -1,12 +1,12 @@
-function Game() {
+function Game(winX, winY) {
     this.canvas = document.getElementById('canvas');
     this.ctx = canvas.getContext('2d');
+    this.canvas.width = winX || 800;
+    this.canvas.height = winY || 600;
 
     this.now = null;
     this.delta = 0;
-    this.last = Tools.timestamp();
-    this.fps = 60;
-    this.step = 1/this.fps;
+    this.then = Tools.timestamp();
 
     this.gameStates = [];
 }
@@ -31,12 +31,9 @@ Game.prototype.peekState = function () {
 
 Game.prototype.gameLoop = function () {
     if(this.peekState() === null) { return; }
-
     this.now = Tools.timestamp();
-    this.delta = this.delta + Math.min(1, (this.now - this.last) / 1000);
-    while (this.delta > this.step) {
-        this.delta = this.delta - this.step;
-        this.peekState().update(this.step);
-    }
-    this.peekState().draw();
+    this.delta = (this.now - this.then) / 1000;
+    this.peekState().update(this.delta);
+    this.then = this.now;
+    this.peekState().draw(this.ctx);
 };
