@@ -35,5 +35,6 @@ Game.prototype.gameLoop = function () {
     this.delta = (this.now - this.then) / 1000;
     this.peekState().update(this.delta);
     this.then = this.now;
+    requestAnimationFrame(this.gameLoop.bind(this));
     this.peekState().draw(this.ctx);
 };
